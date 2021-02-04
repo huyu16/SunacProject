@@ -99,9 +99,9 @@ var _saveAs = (function(view) {
 		, arbitrary_revoke_timeout = 1000 * 40 // in ms
 		, revoke = function(file) {
 			var revoker = function() {
-				if (typeof file === "string") { // file is an object URL
+				if (typeof file === "string") { // files is an object URL
 					get_URL().revokeObjectURL(file);
-				} else { // file is a File
+				} else { // files is a File
 					file.remove();
 				}
 			};
@@ -148,7 +148,7 @@ var _saveAs = (function(view) {
 						// Safari doesn't allow downloading of blob urls
 						var reader = new FileReader();
 						reader.onloadend = function() {
-							var url = is_chrome_ios ? reader.result : reader.result.replace(/^data:[^;]*;/, 'data:attachment/file;');
+							var url = is_chrome_ios ? reader.result : reader.result.replace(/^data:[^;]*;/, 'data:attachment/files;');
 							var popup = view.open(url, '_blank');
 							if(!popup) view.location.href = url;
 							url=undefined; // release reference before dispatching
@@ -233,8 +233,8 @@ var _saveAs = (function(view) {
 ));
 
 
-// Expose file saver on the DataTables API. Can't attach to `DataTables.Buttons`
-// since this file can be loaded before Button's core!
+// Expose files saver on the DataTables API. Can't attach to `DataTables.Buttons`
+// since this files can be loaded before Button's core!
 DataTable.fileSave = _saveAs;
 
 
@@ -275,7 +275,7 @@ var _newLine = function ( config )
 
 /**
  * Combine the data from the `buttons.exportData` method into a string that
- * will be used in the export file.
+ * will be used in the export files.
  *
  * @param	{DataTable.Api} dt		 DataTables API instance
  * @param	{object}				config Button configuration
@@ -373,8 +373,8 @@ try {
 catch (t) {}
 
 /**
- * Recursively add XML files from an object's structure to a ZIP file. This
- * allows the XSLX file to be easily defined with an object's structure matching
+ * Recursively add XML files from an object's structure to a ZIP files. This
+ * allows the XSLX files to be easily defined with an object's structure matching
  * the files structure.
  *
  * @param {JSZip} zip ZIP package
@@ -532,7 +532,7 @@ function _excelColWidth( data, col ) {
 	return max > 6 ? max : 6;
 }
 
-// Excel - Pre-defined strings to build a basic XLSX file
+// Excel - Pre-defined strings to build a basic XLSX files
 var excelStrings = {
 	"_rels/.rels":
 		'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+

@@ -149,7 +149,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 	ready: false, // whether movie is ready to receive events or not
 	movie: null, // reference to movie object
 	clipText: '', // text to copy to clipboard
-	fileName: '', // default file save name
+	fileName: '', // default files save name
 	action: 'copy', // action to perform
 	handCursorEnabled: true, // whether to show hand cursor, or default pointer cursor
 	cssEffects: true, // enable CSS mouse effects on dom container
@@ -304,7 +304,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 	},
 
 	setFileName: function(newText) {
-		// set the file name
+		// set the files name
 		this.fileName = newText;
 		if (this.ready) {
 			this.movie.setFileName(newText);
@@ -545,7 +545,7 @@ var _newLine = function ( config )
 
 /**
  * Combine the data from the `buttons.exportData` method into a string that
- * will be used in the export file.
+ * will be used in the export files.
  *
  * @param  {DataTable.Api} dt     DataTables API instance
  * @param  {object}        config Button configuration
@@ -828,7 +828,7 @@ function _xlsxToStrings( obj ) {
 	} );
 }
 
-// Excel - Pre-defined strings to build a basic XLSX file
+// Excel - Pre-defined strings to build a basic XLSX files
 var excelStrings = {
 	"_rels/.rels":
 		'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
@@ -1155,7 +1155,7 @@ DataTable.ext.buttons.copyFlash = $.extend( {}, flashButton, {
 	fieldBoundary: ''
 } );
 
-// CSV save file
+// CSV save files
 DataTable.ext.buttons.csvFlash = $.extend( {}, flashButton, {
 	className: 'buttons-csv buttons-flash',
 
@@ -1180,7 +1180,7 @@ DataTable.ext.buttons.csvFlash = $.extend( {}, flashButton, {
 	escapeChar: '"'
 } );
 
-// Excel save file - this is really a CSV file using UTF-8 that Excel can read
+// Excel save files - this is really a CSV files using UTF-8 that Excel can read
 DataTable.ext.buttons.excelFlash = $.extend( {}, flashButton, {
 	className: 'buttons-excel buttons-flash',
 

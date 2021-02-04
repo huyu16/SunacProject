@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Ide húzhat képet vagy szöveget',
         dropImage: 'Engedje el a képet vagy szöveget',
         selectFromFiles: 'Fájlok kiválasztása',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'Kép URL címe',
         remove: 'Kép törlése',
         original: 'Original'

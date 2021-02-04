@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Irudi bat ezarri hemen',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Zure fitxategi bat aukeratu',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'Irudiaren URL helbidea',
         remove: 'Remove Image',
         original: 'Original'

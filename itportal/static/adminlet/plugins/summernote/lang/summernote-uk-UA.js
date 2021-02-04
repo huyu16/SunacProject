@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Перетягніть сюди картинку',
         dropImage: 'Перетягніть картинку',
         selectFromFiles: 'Вибрати з файлів',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'URL картинки',
         remove: 'Видалити картинку',
         original: 'Original'

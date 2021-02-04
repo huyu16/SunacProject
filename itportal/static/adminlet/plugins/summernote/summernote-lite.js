@@ -265,8 +265,8 @@ external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.exten
       dragImageHere: 'Drag image or text here',
       dropImage: 'Drop image or Text',
       selectFromFiles: 'Select from files',
-      maximumFileSize: 'Maximum file size',
-      maximumFileSizeError: 'Maximum file size exceeded.',
+      maximumFileSize: 'Maximum files size',
+      maximumFileSizeError: 'Maximum files size exceeded.',
       url: 'Image URL',
       remove: 'Remove Image',
       original: 'Original'
@@ -3527,7 +3527,7 @@ var KEY_MAP = {
 /**
  * @method readFileAsDataURL
  *
- * read contents of file as representing URL
+ * read contents of files as representing URL
  *
  * @param {File} file
  * @return {Promise} - then: dataUrl
@@ -6219,7 +6219,7 @@ function () {
         var item = clipboardData.items.length > 1 ? clipboardData.items[1] : lists.head(clipboardData.items);
 
         if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
-          // paste img file
+          // paste img files
           this.context.invoke('editor.insertImagesOrCallback', [item.getAsFile()]);
           event.preventDefault();
         } else if (item.kind === 'string') {
@@ -8579,7 +8579,7 @@ function () {
       }
 
       var $container = this.options.dialogsInBody ? this.$body : this.options.container;
-      var body = ['<div class="form-group note-form-group note-group-select-from-files">', '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>', '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input form-control-file note-form-control note-input" ', ' type="file" name="files" accept="image/*" multiple="multiple"/>', imageLimitation, '</div>', '<div class="form-group note-group-image-url">', '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>', '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url form-control note-form-control note-input" type="text"/>', '</div>'].join('');
+      var body = ['<div class="form-group note-form-group note-group-select-from-files">', '<label for="note-dialog-image-files-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>', '<input id="note-dialog-image-files-' + this.options.id + '" class="note-image-input form-control-files note-form-control note-input" ', ' type="files" name="files" accept="image/*" multiple="multiple"/>', imageLimitation, '</div>', '<div class="form-group note-group-image-url">', '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>', '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url form-control note-form-control note-input" type="text"/>', '</div>'].join('');
       var buttonClass = 'btn btn-primary note-btn note-btn-primary note-image-btn';
       var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.image.insert, "\" disabled>");
       this.$dialog = this.ui.dialog({
@@ -10526,7 +10526,7 @@ var videoDialog = function videoDialog(opt) {
 };
 
 var imageDialog = function imageDialog(opt) {
-  var body = '<div class="note-form-group note-group-select-from-files">' + '<label for="note-dialog-image-file-' + opt.id + '" class="note-form-label">' + opt.lang.image.selectFromFiles + '</label>' + '<input id="note-dialog-image-file-' + opt.id + '" class="note-note-image-input note-input" type="file" name="files" accept="image/*" multiple="multiple"/>' + opt.imageLimitation + '</div>' + '<div class="note-form-group">' + '<label for="note-dialog-image-url-' + opt.id + '" class="note-form-label">' + opt.lang.image.url + '</label>' + '<input id="note-dialog-image-url-' + opt.id + '" class="note-image-url note-input" type="text"/>' + '</div>';
+  var body = '<div class="note-form-group note-group-select-from-files">' + '<label for="note-dialog-image-files-' + opt.id + '" class="note-form-label">' + opt.lang.image.selectFromFiles + '</label>' + '<input id="note-dialog-image-files-' + opt.id + '" class="note-note-image-input note-input" type="files" name="files" accept="image/*" multiple="multiple"/>' + opt.imageLimitation + '</div>' + '<div class="note-form-group">' + '<label for="note-dialog-image-url-' + opt.id + '" class="note-form-label">' + opt.lang.image.url + '</label>' + '<input id="note-dialog-image-url-' + opt.id + '" class="note-image-url note-input" type="text"/>' + '</div>';
   var footer = ['<button href="#" type="button" class="note-btn note-btn-primary note-btn-large note-image-btn disabled" disabled>', opt.lang.image.insert, '</button>'].join('');
   return dialog({
     title: opt.lang.image.insert,

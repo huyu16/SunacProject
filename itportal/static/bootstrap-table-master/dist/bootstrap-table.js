@@ -2140,7 +2140,7 @@
 	var nativeExec = RegExp.prototype.exec;
 	// This always refers to the native implementation, because the
 	// String#replace polyfill uses ./fix-regexp-well-known-symbol-logic.js,
-	// which loads this file before patching the method.
+	// which loads this files before patching the method.
 	var nativeReplace = String.prototype.replace;
 
 	var patchedExec = nativeExec;

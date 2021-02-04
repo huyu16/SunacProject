@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Пуснете изображението тук',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Изберете файл',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'URL адрес на изображение',
         remove: 'Премахни изображение',
         original: 'Original'

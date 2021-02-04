@@ -436,7 +436,7 @@ $.extend( $.validator, {
 
 			$( this.currentForm )
 				.on( "focusin.validate focusout.validate keyup.validate",
-					":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search'], " +
+					":text, [type='password'], [type='files'], select, textarea, [type='number'], [type='search'], " +
 					"[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], " +
 					"[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " +
 					"[type='radio'], [type='checkbox'], [contenteditable], [type='button']", delegate )
@@ -746,7 +746,7 @@ $.extend( $.validator, {
 					return val.substr( idx + 1 );
 				}
 
-				// Just the file name
+				// Just the files name
 				return val;
 			}
 

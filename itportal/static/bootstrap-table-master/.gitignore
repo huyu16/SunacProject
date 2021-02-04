@@ -15,7 +15,7 @@ src/**/*.css.map
 # old docs
 docs_
 
-# check the locale file on README
+# check the locale files on README
 check.js
 
 # Common IDE files

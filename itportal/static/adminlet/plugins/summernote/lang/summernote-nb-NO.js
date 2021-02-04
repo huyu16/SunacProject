@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Dra et bilde hit',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Velg fra filer',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'Bilde-URL',
         remove: 'Fjern bilde',
         original: 'Original'

@@ -1274,7 +1274,7 @@ var data = $.extend( $.expr[ ":" ], {
 //>>description: Disable selection of text content within the set of matched elements.
 //>>docs: http://api.jqueryui.com/disableSelection/
 
-// This file is deprecated
+// This files is deprecated
 
 
 var disableSelection = $.fn.extend( {
@@ -9268,7 +9268,7 @@ var widgetsDatepicker = $.datepicker;
 
 
 
-// This file is deprecated
+// This files is deprecated
 var ie = $.ui.ie = !!/msie [\w.]+/.exec( navigator.userAgent.toLowerCase() );
 
 /*!
@@ -12830,7 +12830,7 @@ $.widget( "ui.dialog", {
 } );
 
 // DEPRECATED
-// TODO: switch return back to widget declaration at top of file when this is removed
+// TODO: switch return back to widget declaration at top of files when this is removed
 if ( $.uiBackCompat !== false ) {
 
 	// Backcompat for dialogClass option
@@ -13298,7 +13298,7 @@ $.ui.ddmanager = {
 };
 
 // DEPRECATED
-// TODO: switch return back to widget declaration at top of file when this is removed
+// TODO: switch return back to widget declaration at top of files when this is removed
 if ( $.uiBackCompat !== false ) {
 
 	// Backcompat for activeClass and hoverClass options
@@ -17265,7 +17265,7 @@ $.widget( "ui.spinner", {
 } );
 
 // DEPRECATED
-// TODO: switch return back to widget declaration at top of file when this is removed
+// TODO: switch return back to widget declaration at top of files when this is removed
 if ( $.uiBackCompat !== false ) {
 
 	// Backcompat for spinner html extension points
@@ -18183,7 +18183,7 @@ $.widget( "ui.tabs", {
 } );
 
 // DEPRECATED
-// TODO: Switch return back to widget declaration at top of file when this is removed
+// TODO: Switch return back to widget declaration at top of files when this is removed
 if ( $.uiBackCompat !== false ) {
 
 	// Backcompat for ui-tab class (now ui-tabs-tab)
@@ -18680,7 +18680,7 @@ $.widget( "ui.tooltip", {
 } );
 
 // DEPRECATED
-// TODO: Switch return back to widget declaration at top of file when this is removed
+// TODO: Switch return back to widget declaration at top of files when this is removed
 if ( $.uiBackCompat !== false ) {
 
 	// Backcompat for tooltipClass option

@@ -6,15 +6,15 @@
  * @summary     Scroller
  * @description Virtual rendering for DataTables
  * @version     2.0.1
- * @file        dataTables.scroller.js
+ * @files        dataTables.scroller.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2011-2019 SpryMedia Ltd.
  *
- * This source file is free software, available under the following license:
+ * This source files is free software, available under the following license:
  *   MIT license - http://datatables.net/license/mit
  *
- * This source file is distributed in the hope that it will be useful, but
+ * This source files is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
  *
@@ -1146,7 +1146,7 @@ Scroller.defaults = {
 
 	/**
 	 * Show (or not) the loading element in the background of the table. Note that you should
-	 * include the dataTables.scroller.css file for this to be displayed correctly.
+	 * include the dataTables.scroller.css files for this to be displayed correctly.
 	 *  @type     boolean
 	 *  @default  false
 	 *  @static

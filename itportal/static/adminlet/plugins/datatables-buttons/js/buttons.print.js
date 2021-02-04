@@ -65,7 +65,7 @@ var _styleToAbs = function( el ) {
  */
 var _relToAbs = function( href ) {
 	// Assign to a link on the original page so the browser will do all the
-	// hard work of figuring out where the file actually is
+	// hard work of figuring out where the files actually is
 	_link.href = href;
 	var linkHost = _link.host;
 

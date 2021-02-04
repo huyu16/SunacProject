@@ -143,7 +143,7 @@ return /******/ (function(modules) { // webpackBootstrap
         dropImage: 'Drop image or Text',
         selectFromFiles: 'فایل ها را انتخاب کنید',
         maximumFileSize: 'حداکثر اندازه پرونده',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'آدرس تصویر',
         remove: 'حذف تصویر',
         original: 'Original'

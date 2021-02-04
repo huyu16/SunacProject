@@ -8,13 +8,13 @@ def area_org_exec(v_area):
     # 绑定Mysql数据库
     dbconn = MysqlOper()
     adconn = AdOper()
-    
+
     t_maxorglevel = dbconn.dbonequery('select max(organlevel) from idm_org_handle where organhandled > 9 '
-                                    'and areaid=%s', v_area)
+                                      'and areaid=%s', v_area)
     t_minorglevel = dbconn.dbonequery('select min(organlevel) from idm_org_handle where organhandled > 9 '
-                                    'and areaid=%s', v_area)
+                                      'and areaid=%s', v_area)
     maxorglevel = t_maxorglevel[0]
-    minorglevel = t_maxorglevel[0]
+    minorglevel = t_minorglevel[0]
     try:
         if maxorglevel is not None:
             while minorglevel <= maxorglevel:
@@ -24,9 +24,7 @@ def area_org_exec(v_area):
                     'and areaid = %s', minorglevel[0], v_area)
                 if len(t_resorg) > 0:
                     for orgobject in t_resorg:
-                        print(orgobject)
-                        adfilter = '(distinguishedName='+orgobject[3]+')'
-                        print(adfilter)
+                        adfilter = '(distinguishedName=' + orgobject[3] + ')'
                         res_adquery = adconn.adquery('ou=融创集团,dc=testing,dc=local', adfilter)
                         if res_adquery:
                             dbconn.dbonemod('update idm_org_handle set organhandled = 2 '
@@ -74,10 +72,10 @@ def area_org_exec(v_area):
                 minorglevel += 1
         else:
             infolog_org("AD信息--没有新增需要处理的OU")
-    
+
     except Exception as e:
         errlog_org(e)
-    
+
     finally:
         adconn.adclose()
         dbconn.dbclose()

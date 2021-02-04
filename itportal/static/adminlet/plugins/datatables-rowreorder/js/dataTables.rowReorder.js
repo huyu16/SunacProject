@@ -6,15 +6,15 @@
  * @summary     RowReorder
  * @description Row reordering extension for DataTables
  * @version     1.2.6
- * @file        dataTables.rowReorder.js
+ * @files        dataTables.rowReorder.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2015-2019 SpryMedia Ltd.
  *
- * This source file is free software, available under the following license:
+ * This source files is free software, available under the following license:
  *   MIT license - http://datatables.net/license/mit
  *
- * This source file is distributed in the hope that it will be useful, but
+ * This source files is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
  *

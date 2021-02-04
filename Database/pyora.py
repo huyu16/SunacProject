@@ -159,30 +159,30 @@ class Checks(object):
             print(i[0])
 
     def logswcompletion(self):
-        """log file switch completion"""
+        """log files switch completion"""
         sql = '''select to_char(time_waited, 'FM99999999999999990') retvalue 
               from v$system_event se, v$event_name en where se.event(+) 
-              = en.name and en.name = 'log file switch completion' '''
+              = en.name and en.name = 'log files switch completion' '''
         self.cur.execute(sql)
         res = self.cur.fetchall()
         for i in res:
             print(i[0])
 
     def logfilesync(self):
-        """Log file sync"""
+        """Log files sync"""
         sql = '''select to_char(time_waited, 'FM99999999999999990') retvalue 
               from v$system_event se, v$event_name en 
-              where se.event(+) = en.name and en.name = 'log file sync' '''
+              where se.event(+) = en.name and en.name = 'log files sync' '''
         self.cur.execute(sql)
         res = self.cur.fetchall()
         for i in res:
             print(i[0])
 
     def logprllwrite(self):
-        """Log file parallel write"""
+        """Log files parallel write"""
         sql = '''select to_char(time_waited, 'FM99999999999999990') retvalue 
               from v$system_event se, v$event_name en where se.event(+) 
-              = en.name and en.name = 'log file parallel write' '''
+              = en.name and en.name = 'log files parallel write' '''
         self.cur.execute(sql)
         res = self.cur.fetchall()
         for i in res:

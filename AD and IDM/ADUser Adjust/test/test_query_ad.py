@@ -4,20 +4,18 @@
 from libs.connect import AdOper
 from ldap3 import Server, Connection, SUBTREE
 
-# adconn = AdOper()
+adconn = AdOper()
 
 # server = Server('192.168.4.100')
 # adconn = Connection(server, 'testing\\admin_adsrv', 'Sunac2020', auto_bind=True)
+test = 'anfl'
+adfilterstr = f'(&(objectClass=person)(sAMAccountName={test.lower()})(!(userAccountControl=514)))'
+adquery = adconn.adquery('ou=融创集团,dc=testing,dc=local', adfilterstr)
+print(adquery)
+print(adconn.adconn.response)
 
-# adquery = adconn.adquery('ou=融创集团,dc=testing,dc=local',
-#                          '(distinguishedName=OU=青岛文旅城(持有物业),OU=青岛公司,OU=北京区域集团,OU=融创集团,DC=testing,DC=local)')
-# print(adquery)
+if adquery:
+    print('YES')
+else:
+    print('NO')
 
-a = ('1', '2', '3')
-
-astr = str(a)
-astr = astr.replace('1','2')
-print(astr)
-
-atup = tuple(astr)
-print(atup)

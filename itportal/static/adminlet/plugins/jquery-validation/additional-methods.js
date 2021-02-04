@@ -75,7 +75,7 @@ $.validator.addMethod( "abaRoutingNumber", function( value ) {
 	return false;
 }, "Please enter a valid routing number." );
 
-// Accept a value from a file input based on a required mimetype
+// Accept a value from a files input based on a required mimetype
 $.validator.addMethod( "accept", function( value, element, param ) {
 
 	// Split mime on commas in case we have multiple types we can accept
@@ -98,13 +98,13 @@ $.validator.addMethod( "accept", function( value, element, param ) {
 				.replace( /,/g, "|" )
 				.replace( /\/\*/g, "/.*" );
 
-		// Check if the element has a FileList before checking each file
+		// Check if the element has a FileList before checking each files
 		if ( element.files && element.files.length ) {
 			regex = new RegExp( ".?(" + typeParam + ")$", "i" );
 			for ( i = 0; i < element.files.length; i++ ) {
 				file = element.files[ i ];
 
-				// Grab the mimetype from the loaded file, verify it matches
+				// Grab the mimetype from the loaded files, verify it matches
 				if ( !file.type.match( regex ) ) {
 					return false;
 				}
@@ -112,7 +112,7 @@ $.validator.addMethod( "accept", function( value, element, param ) {
 		}
 	}
 
-	// Either return true because we've validated each file, or because the
+	// Either return true because we've validated each files, or because the
 	// browser does not support element.files and the FileList feature
 	return true;
 }, $.validator.format( "Please enter a value with a valid mimetype." ) );
@@ -680,7 +680,7 @@ $.validator.addMethod( "dateNL", function( value, element ) {
 	return this.optional( element ) || /^(0?[1-9]|[12]\d|3[01])[\.\/\-](0?[1-9]|1[012])[\.\/\-]([12]\d)?(\d\d)$/.test( value );
 }, $.validator.messages.date );
 
-// Older "accept" file extension method. Old docs: http://docs.jquery.com/Plugins/Validation/Methods/accept
+// Older "accept" files extension method. Old docs: http://docs.jquery.com/Plugins/Validation/Methods/accept
 $.validator.addMethod( "extension", function( value, element, param ) {
 	param = typeof param === "string" ? param.replace( /,/g, "|" ) : "png|jpe?g|gif";
 	return this.optional( element ) || value.match( new RegExp( "\\.(" + param + ")$", "i" ) );
@@ -913,7 +913,7 @@ $.validator.addMethod( "maxfiles", function( value, element, param ) {
 	return true;
 }, $.validator.format( "Please select no more than {0} files." ) );
 
-// Limit the size of each individual file in a FileList.
+// Limit the size of each individual files in a FileList.
 $.validator.addMethod( "maxsize", function( value, element, param ) {
 	if ( this.optional( element ) ) {
 		return true;

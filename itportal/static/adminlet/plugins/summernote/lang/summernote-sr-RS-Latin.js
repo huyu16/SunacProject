@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Prevuci sliku ovde',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Izaberi iz datoteke',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'Adresa slike',
         remove: 'Ukloni sliku',
         original: 'Original'

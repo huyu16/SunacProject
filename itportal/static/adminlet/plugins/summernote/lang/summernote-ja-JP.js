@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'ここに画像をドラッグしてください',
         dropImage: 'Drop image or Text',
         selectFromFiles: '画像ファイルを選ぶ',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'URLから画像を挿入する',
         remove: '画像を削除する',
         original: 'Original'

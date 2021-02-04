@@ -3,7 +3,7 @@ WSGI config for itportal project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
-For more information on this file, see
+For more information on this files, see
 https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
 

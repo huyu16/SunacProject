@@ -32,7 +32,6 @@ def area_org_inc():
         # 查询增量 循环支持的最大页，每页100条数据，如果查询到的当前页小于100条 停止页面循环，如果等于100条，查询下一页
         while NUM <= 999 and NUM_LOOP == 'YES':
             residmorg = idmquery(WSDL_URL, begintime, endtime, NUM, SYSTEMID, idmid, 'idmorg')
-            print(residmorg)
             if residmorg['body']['HEADER']['RESULT'] == '0':
                 org_list = residmorg['body']['LIST']
                 # 解析获取的soap信息

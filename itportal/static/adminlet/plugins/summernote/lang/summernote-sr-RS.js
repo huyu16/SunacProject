@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Превуци слику овде',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Изабери из датотеке',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'Адреса слике',
         remove: 'Уклони слику',
         original: 'Original'

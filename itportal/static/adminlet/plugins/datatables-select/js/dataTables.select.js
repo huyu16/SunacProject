@@ -7,15 +7,15 @@
  * @description A collection of API methods, events and buttons for DataTables
  *   that provides selection options of the items in a DataTable
  * @version     1.3.1
- * @file        dataTables.select.js
+ * @files        dataTables.select.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     datatables.net/forums
  * @copyright   Copyright 2015-2019 SpryMedia Ltd.
  *
- * This source file is free software, available under the following license:
+ * This source files is free software, available under the following license:
  *   MIT license - http://datatables.net/license/mit
  *
- * This source file is distributed in the hope that it will be useful, but
+ * This source files is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
  *

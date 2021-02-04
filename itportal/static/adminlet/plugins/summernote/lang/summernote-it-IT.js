@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Trascina qui un\'immagine',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Scegli dai Documenti',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'URL dell\'immagine',
         remove: 'Rimuovi immagine',
         original: 'Original'

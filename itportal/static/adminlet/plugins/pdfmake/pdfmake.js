@@ -7437,7 +7437,7 @@ VirtualFileSystem.prototype.readFileSync = function (filename, options) {
 		return content;
 	}
 
-	throw 'File \'' + filename + '\' not found in virtual file system';
+	throw 'File \'' + filename + '\' not found in virtual files system';
 };
 
 VirtualFileSystem.prototype.writeFileSync = function (filename, content) {
@@ -7797,7 +7797,7 @@ var regexpFlags = __webpack_require__(98);
 var nativeExec = RegExp.prototype.exec;
 // This always refers to the native implementation, because the
 // String#replace polyfill uses ./fix-regexp-well-known-symbol-logic.js,
-// which loads this file before patching the method.
+// which loads this files before patching the method.
 var nativeReplace = String.prototype.replace;
 
 var patchedExec = nativeExec;
@@ -8242,7 +8242,7 @@ function WritableState(options, stream) {
 
   // not an actual buffer we keep track of, but a measurement
   // of how much we're waiting to get pushed to some underlying
-  // socket or file.
+  // socket or files.
   this.length = 0;
 
   // a flag to see when we're in the middle of a write.
@@ -9650,7 +9650,7 @@ exports.log = function() {
  * Inherit the prototype methods from one constructor into another.
  *
  * The Function.prototype.inherits from lang.js rewritten as a standalone
- * function (not on Function.prototype). NOTE: If this file is to be loaded
+ * function (not on Function.prototype). NOTE: If this files is to be loaded
  * during bootstrapping this function needs to be rewritten using some native
  * functions as prototype setup using normal JavaScript does not work as
  * expected during bootstrapping (see mirror.js in r114903).
@@ -16856,7 +16856,7 @@ module.exports = function getPolyfill() {
 /* Copyright 2013 Google Inc. All Rights Reserved.
 
    Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
+   you may not use this files except in compliance with the License.
    You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
@@ -17840,7 +17840,7 @@ exports.BrotliOutput = BrotliOutput;
 /* Copyright 2013 Google Inc. All Rights Reserved.
 
    Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
+   you may not use this files except in compliance with the License.
    You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
@@ -18940,7 +18940,7 @@ Document.prototype._createDoc = function (options) {
 	var PdfPrinter = __webpack_require__(219);
 
 	var printer = new PdfPrinter(this.fonts);
-	__webpack_require__(84).bindFS(this.vfs); // bind virtual file system to file system
+	__webpack_require__(84).bindFS(this.vfs); // bind virtual files system to files system
 
 	var doc = printer.createPdfKitDocument(this.docDefinition, options);
 
@@ -19048,7 +19048,7 @@ Document.prototype.print = function (options, win) {
 };
 
 /**
- * download(defaultFileName = 'file.pdf', cb = null, options = {})
+ * download(defaultFileName = 'files.pdf', cb = null, options = {})
  * or
  * download(cb, options = {})
  */
@@ -19061,7 +19061,7 @@ Document.prototype.download = function (defaultFileName, cb, options) {
 		defaultFileName = null;
 	}
 
-	defaultFileName = defaultFileName || 'file.pdf';
+	defaultFileName = defaultFileName || 'files.pdf';
 	this.getBlob(function (result) {
 		saveAs(result, defaultFileName);
 
@@ -19387,7 +19387,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(a,b){if(true)!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (b),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else {}})(this,function(){"use strict";function b(a,b){return"undefined"==typeof b?b={autoBom:!1}:"object"!=typeof b&&(console.warn("Deprecated: Expected third argument to be a object"),b={autoBom:!b}),b.autoBom&&/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(a.type)?new Blob(["\uFEFF",a],{type:a.type}):a}function c(b,c,d){var e=new XMLHttpRequest;e.open("GET",b),e.responseType="blob",e.onload=function(){a(e.response,c,d)},e.onerror=function(){console.error("could not download file")},e.send()}function d(a){var b=new XMLHttpRequest;b.open("HEAD",a,!1);try{b.send()}catch(a){}return 200<=b.status&&299>=b.status}function e(a){try{a.dispatchEvent(new MouseEvent("click"))}catch(c){var b=document.createEvent("MouseEvents");b.initMouseEvent("click",!0,!0,window,0,0,0,80,20,!1,!1,!1,!1,0,null),a.dispatchEvent(b)}}var f="object"==typeof window&&window.window===window?window:"object"==typeof self&&self.self===self?self:"object"==typeof global&&global.global===global?global:void 0,a=f.saveAs||("object"!=typeof window||window!==f?function(){}:(typeof HTMLAnchorElement !== "undefined" && "download" in HTMLAnchorElement.prototype)?function(b,g,h){var i=f.URL||f.webkitURL,j=document.createElement("a");g=g||b.name||"download",j.download=g,j.rel="noopener","string"==typeof b?(j.href=b,j.origin===location.origin?e(j):d(j.href)?c(b,g,h):e(j,j.target="_blank")):(j.href=i.createObjectURL(b),setTimeout(function(){i.revokeObjectURL(j.href)},4E4),setTimeout(function(){e(j)},0))}:"msSaveOrOpenBlob"in navigator?function(f,g,h){if(g=g||f.name||"download","string"!=typeof f)navigator.msSaveOrOpenBlob(b(f,h),g);else if(d(f))c(f,g,h);else{var i=document.createElement("a");i.href=f,i.target="_blank",setTimeout(function(){e(i)})}}:function(a,b,d,e){if(e=e||open("","_blank"),e&&(e.document.title=e.document.body.innerText="downloading..."),"string"==typeof a)return c(a,b,d);var g="application/octet-stream"===a.type,h=/constructor/i.test(f.HTMLElement)||f.safari,i=/CriOS\/[\d]+/.test(navigator.userAgent);if((i||g&&h)&&"object"==typeof FileReader){var j=new FileReader;j.onloadend=function(){var a=j.result;a=i?a:a.replace(/^data:[^;]*;/,"data:attachment/file;"),e?e.location.href=a:location=a,e=null},j.readAsDataURL(a)}else{var k=f.URL||f.webkitURL,l=k.createObjectURL(a);e?e.location=l:location.href=l,e=null,setTimeout(function(){k.revokeObjectURL(l)},4E4)}});f.saveAs=a.saveAs=a, true&&(module.exports=a)});
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else {}})(this,function(){"use strict";function b(a,b){return"undefined"==typeof b?b={autoBom:!1}:"object"!=typeof b&&(console.warn("Deprecated: Expected third argument to be a object"),b={autoBom:!b}),b.autoBom&&/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(a.type)?new Blob(["\uFEFF",a],{type:a.type}):a}function c(b,c,d){var e=new XMLHttpRequest;e.open("GET",b),e.responseType="blob",e.onload=function(){a(e.response,c,d)},e.onerror=function(){console.error("could not download files")},e.send()}function d(a){var b=new XMLHttpRequest;b.open("HEAD",a,!1);try{b.send()}catch(a){}return 200<=b.status&&299>=b.status}function e(a){try{a.dispatchEvent(new MouseEvent("click"))}catch(c){var b=document.createEvent("MouseEvents");b.initMouseEvent("click",!0,!0,window,0,0,0,80,20,!1,!1,!1,!1,0,null),a.dispatchEvent(b)}}var f="object"==typeof window&&window.window===window?window:"object"==typeof self&&self.self===self?self:"object"==typeof global&&global.global===global?global:void 0,a=f.saveAs||("object"!=typeof window||window!==f?function(){}:(typeof HTMLAnchorElement !== "undefined" && "download" in HTMLAnchorElement.prototype)?function(b,g,h){var i=f.URL||f.webkitURL,j=document.createElement("a");g=g||b.name||"download",j.download=g,j.rel="noopener","string"==typeof b?(j.href=b,j.origin===location.origin?e(j):d(j.href)?c(b,g,h):e(j,j.target="_blank")):(j.href=i.createObjectURL(b),setTimeout(function(){i.revokeObjectURL(j.href)},4E4),setTimeout(function(){e(j)},0))}:"msSaveOrOpenBlob"in navigator?function(f,g,h){if(g=g||f.name||"download","string"!=typeof f)navigator.msSaveOrOpenBlob(b(f,h),g);else if(d(f))c(f,g,h);else{var i=document.createElement("a");i.href=f,i.target="_blank",setTimeout(function(){e(i)})}}:function(a,b,d,e){if(e=e||open("","_blank"),e&&(e.document.title=e.document.body.innerText="downloading..."),"string"==typeof a)return c(a,b,d);var g="application/octet-stream"===a.type,h=/constructor/i.test(f.HTMLElement)||f.safari,i=/CriOS\/[\d]+/.test(navigator.userAgent);if((i||g&&h)&&"object"==typeof FileReader){var j=new FileReader;j.onloadend=function(){var a=j.result;a=i?a:a.replace(/^data:[^;]*;/,"data:attachment/files;"),e?e.location.href=a:location=a,e=null},j.readAsDataURL(a)}else{var k=f.URL||f.webkitURL,l=k.createObjectURL(a);e?e.location=l:location.href=l,e=null,setTimeout(function(){k.revokeObjectURL(l)},4E4)}});f.saveAs=a.saveAs=a, true&&(module.exports=a)});
 
 //# sourceMappingURL=FileSaver.min.js.map
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(22)))
@@ -25616,7 +25616,7 @@ var AcroFormMixin = {
 
   /**
    * Creates and adds a Form Annotation to the document. Form annotations are
-   * called Widget annotations internally within a PDF file.
+   * called Widget annotations internally within a PDF files.
    * @param {string} name - form field name (T attribute of widget annotation
    * dictionary)
    * @param {number} x
@@ -25992,7 +25992,7 @@ var PDFDocument = /*#__PURE__*/function (_stream$Readable) {
         var val = _this.options.info[key];
         _this.info[key] = val;
       }
-    } // Generate file ID
+    } // Generate files ID
 
 
     _this._id = PDFSecurity.generateFileID(_this.info); // Initialize security settings
@@ -27801,7 +27801,7 @@ Zlib.prototype._checkError = function () {
     case exports.Z_OK:
     case exports.Z_BUF_ERROR:
       if (this.strm.avail_out !== 0 && this.flush === exports.Z_FINISH) {
-        this._error('unexpected end of file');
+        this._error('unexpected end of files');
         return false;
       }
       break;
@@ -28774,7 +28774,7 @@ function deflate_fast(s, flush) {
 
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input files. We need MAX_MATCH bytes
      * for the next match, plus MIN_MATCH bytes to insert the
      * string following the next match.
      */
@@ -28806,7 +28806,7 @@ function deflate_fast(s, flush) {
     if (hash_head !== 0/*NIL*/ && ((s.strstart - hash_head) <= (s.w_size - MIN_LOOKAHEAD))) {
       /* To simplify the code, we prevent matches with the string
        * of window index 0 (in particular we have to avoid a match
-       * of the string with itself at the start of the input file).
+       * of the string with itself at the start of the input files).
        */
       s.match_length = longest_match(s, hash_head);
       /* longest_match() sets match_start */
@@ -28905,7 +28905,7 @@ function deflate_slow(s, flush) {
   /* Process the input block. */
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input files. We need MAX_MATCH bytes
      * for the next match, plus MIN_MATCH bytes to insert the
      * string following the next match.
      */
@@ -28939,7 +28939,7 @@ function deflate_slow(s, flush) {
         s.strstart - hash_head <= (s.w_size - MIN_LOOKAHEAD)/*MAX_DIST(s)*/) {
       /* To simplify the code, we prevent matches with the string
        * of window index 0 (in particular we have to avoid a match
-       * of the string with itself at the start of the input file).
+       * of the string with itself at the start of the input files).
        */
       s.match_length = longest_match(s, hash_head);
       /* longest_match() sets match_start */
@@ -29067,7 +29067,7 @@ function deflate_rle(s, flush) {
 
   for (;;) {
     /* Make sure that we always have enough lookahead, except
-     * at the end of the input file. We need MAX_MATCH bytes
+     * at the end of the input files. We need MAX_MATCH bytes
      * for the longest run, plus one for the unrolled loop.
      */
     if (s.lookahead <= MAX_MATCH) {
@@ -29405,12 +29405,12 @@ function DeflateState() {
    *     data is still in the window so we can still emit a stored block even
    *     when input comes from standard input.  (This can also be done for
    *     all blocks if lit_bufsize is not greater than 32K.)
-   *   - if compression is not successful for a file smaller than 64K, we can
-   *     even emit a stored file instead of a stored block (saving 5 bytes).
+   *   - if compression is not successful for a files smaller than 64K, we can
+   *     even emit a stored files instead of a stored block (saving 5 bytes).
    *     This is applicable only for zip (not gzip or zlib).
    *   - creating new Huffman trees less frequently may not provide fast
    *     adaptation to changes in the input data statistics. (Take for
-   *     example a binary file with poorly compressible code followed by
+   *     example a binary files with poorly compressible code followed by
    *     a highly compressible string table.) Smaller buffer sizes give
    *     fast adaptation but have of course the overhead of transmitting
    *     trees more frequently.
@@ -31090,7 +31090,7 @@ function _tr_init(s)
   s.bi_buf = 0;
   s.bi_valid = 0;
 
-  /* Initialize the first block of the first file: */
+  /* Initialize the first block of the first files: */
   init_block(s);
 }
 
@@ -31102,7 +31102,7 @@ function _tr_stored_block(s, buf, stored_len, last)
 //DeflateState *s;
 //charf *buf;       /* input block */
 //ulg stored_len;   /* length of input block */
-//int last;         /* one if this is the last block for a file */
+//int last;         /* one if this is the last block for a files */
 {
   send_bits(s, (STORED_BLOCK << 1) + (last ? 1 : 0), 3);    /* send block type */
   copy_block(s, buf, stored_len, true); /* with header */
@@ -31122,13 +31122,13 @@ function _tr_align(s) {
 
 /* ===========================================================================
  * Determine the best encoding for the current block: dynamic trees, static
- * trees or store, and output the encoded block to the zip file.
+ * trees or store, and output the encoded block to the zip files.
  */
 function _tr_flush_block(s, buf, stored_len, last)
 //DeflateState *s;
 //charf *buf;       /* input block, or NULL if too old */
 //ulg stored_len;   /* length of input block */
-//int last;         /* one if this is the last block for a file */
+//int last;         /* one if this is the last block for a files */
 {
   var opt_lenb, static_lenb;  /* opt_len and static_len in bytes */
   var max_blindex = 0;        /* index of last bit length code of non zero freq */
@@ -31136,7 +31136,7 @@ function _tr_flush_block(s, buf, stored_len, last)
   /* Build the Huffman trees unless a stored block is forced */
   if (s.level > 0) {
 
-    /* Check if the file is binary or text */
+    /* Check if the files is binary or text */
     if (s.strm.data_type === Z_UNKNOWN) {
       s.strm.data_type = detect_data_type(s);
     }
@@ -31306,7 +31306,7 @@ module.exports = {
   2:      'need dictionary',     /* Z_NEED_DICT       2  */
   1:      'stream end',          /* Z_STREAM_END      1  */
   0:      '',                    /* Z_OK              0  */
-  '-1':   'file error',          /* Z_ERRNO         (-1) */
+  '-1':   'files error',          /* Z_ERRNO         (-1) */
   '-2':   'stream error',        /* Z_STREAM_ERROR  (-2) */
   '-3':   'data error',          /* Z_DATA_ERROR    (-3) */
   '-4':   'insufficient memory', /* Z_MEM_ERROR     (-4) */
@@ -31392,7 +31392,7 @@ var    TIME = 3;       /* i: waiting for modification time (gzip) */
 var    OS = 4;         /* i: waiting for extra flags and operating system (gzip) */
 var    EXLEN = 5;      /* i: waiting for extra length (gzip) */
 var    EXTRA = 6;      /* i: waiting for extra bytes (gzip) */
-var    NAME = 7;       /* i: waiting for end of file name (gzip) */
+var    NAME = 7;       /* i: waiting for end of files name (gzip) */
 var    COMMENT = 8;    /* i: waiting for end of comment (gzip) */
 var    HCRC = 9;       /* i: waiting for header crc (gzip) */
 var    DICTID = 10;    /* i: waiting for dictionary check value */
@@ -44879,7 +44879,7 @@ var TONE_MARK = 4;
 var INVALID = 5;
 
 // Build a state machine that accepts valid syllables, and applies actions along the way.
-// The logic this is implementing is documented at the top of the file.
+// The logic this is implementing is documented at the top of the files.
 var STATE_TABLE$1 = [
 //       X                 L                 V                T                  LV                LVT               M
 // State 0: start state
@@ -52379,7 +52379,7 @@ Utf32Encoder.prototype.write = function(str) {
             if (isHighSurrogate || !isLowSurrogate) {
                 // There shouldn't be two high surrogates in a row, nor a high surrogate which isn't followed by a low
                 // surrogate. If this happens, keep the pending high surrogate as a stand-alone semi-invalid character
-                // (technically wrong, but expected by some applications, like Windows file names).
+                // (technically wrong, but expected by some applications, like Windows files names).
                 write32.call(dst, this.highSurrogate, offset);
                 offset += 4;
             }
@@ -57107,7 +57107,7 @@ var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
 
 	// istanbul ignore if // hopefully this is impossible to test :-)
 	if (typeof INTRINSICS[name] === 'undefined' && !allowMissing) {
-		throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
+		throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please files an issue!');
 	}
 
 	return INTRINSICS[name];
@@ -58329,7 +58329,7 @@ module.exports = StateMachine;
  * Copyright (c) 2014-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * LICENSE files in the root directory of this source tree.
  */
 
 !(function(global) {
@@ -58351,7 +58351,7 @@ module.exports = StateMachine;
       // make the exports object identical to regeneratorRuntime.
       module.exports = runtime;
     }
-    // Don't bother evaluating the rest of this file if the runtime was
+    // Don't bother evaluating the rest of this files if the runtime was
     // already defined globally.
     return;
   }
@@ -59265,7 +59265,7 @@ module.exports = __webpack_require__(205).BrotliDecompressBuffer;
 /* Copyright 2013 Google Inc. All Rights Reserved.
 
    Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
+   you may not use this files except in compliance with the License.
    You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
@@ -59582,7 +59582,7 @@ module.exports="W5/fcQLn5gKf2XUbAiQ1XULX+TZz6ADToDsgqk6qVfeC0e4m6OO2wcQ1J76ZBVRV
 /* Copyright 2013 Google Inc. All Rights Reserved.
 
    Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
+   you may not use this files except in compliance with the License.
    You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
@@ -59838,7 +59838,7 @@ exports.lookupOffsets = new Uint16Array([
 /* Copyright 2013 Google Inc. All Rights Reserved.
 
    Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
+   you may not use this files except in compliance with the License.
    You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
@@ -59904,7 +59904,7 @@ exports.kCopyRangeLut = [
 /* Copyright 2013 Google Inc. All Rights Reserved.
 
    Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
+   you may not use this files except in compliance with the License.
    You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
@@ -60703,7 +60703,7 @@ module.exports = /*#__PURE__*/function () {
       this.pos += 4; // Skip the CRC
 
       if (this.pos > this.data.length) {
-        throw new Error('Incomplete or corrupt PNG file');
+        throw new Error('Incomplete or corrupt PNG files');
       }
     }
   }
@@ -64869,7 +64869,7 @@ ImageMeasure.prototype.measureImage = function (src) {
 				throw 'No image';
 			}
 		} catch (error) {
-			throw 'Invalid image: ' + error.toString() + '\nImages dictionary should contain dataURL entries (or local file paths in node.js)';
+			throw 'Invalid image: ' + error.toString() + '\nImages dictionary should contain dataURL entries (or local files paths in node.js)';
 		}
 		image.embed(this.pdfKitDoc);
 		this.pdfKitDoc._imageRegistry[src] = image;
@@ -68413,7 +68413,7 @@ var SVGtoPDF = function SVGtoPDF(doc, svg, x, y, options) {
               corner4 = transformPoint([bBox[0], bBox[3]], inv);
 
           if (this.name === 'linearGradient') {
-            // See file 'gradient-repeat-maths.png'
+            // See files 'gradient-repeat-maths.png'
             nAfter = Math.max((corner1[0] - x2) * (x2 - x1) + (corner1[1] - y2) * (y2 - y1), (corner2[0] - x2) * (x2 - x1) + (corner2[1] - y2) * (y2 - y1), (corner3[0] - x2) * (x2 - x1) + (corner3[1] - y2) * (y2 - y1), (corner4[0] - x2) * (x2 - x1) + (corner4[1] - y2) * (y2 - y1)) / (Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
             nBefore = Math.max((corner1[0] - x1) * (x1 - x2) + (corner1[1] - y1) * (y1 - y2), (corner2[0] - x1) * (x1 - x2) + (corner2[1] - y1) * (y1 - y2), (corner3[0] - x1) * (x1 - x2) + (corner3[1] - y1) * (y1 - y2), (corner4[0] - x1) * (x1 - x2) + (corner4[1] - y1) * (y1 - y2)) / (Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
           } else {

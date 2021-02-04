@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Sleep hier een afbeelding naar toe',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Selecteer een bestand',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'URL van de afbeelding',
         remove: 'Verwijder afbeelding',
         original: 'Original'

@@ -142,8 +142,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Thả Ảnh ở vùng này',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Chọn từ File',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'URL',
         remove: 'Xóa',
         original: 'Original'

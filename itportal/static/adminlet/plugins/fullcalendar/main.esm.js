@@ -1127,7 +1127,7 @@ function diffDates(date0, date1, dateEnv, largeUnit) {
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
+this files except in compliance with the License. You may obtain a copy of the
 License at http://www.apache.org/licenses/LICENSE-2.0
 
 THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -2865,7 +2865,7 @@ calendar // for expanding businesshours
     }
     return []; // if it's false
 }
-// TODO: move to event-store file?
+// TODO: move to event-store files?
 function eventStoreToRanges(eventStore) {
     var instances = eventStore.instances;
     var ranges = [];
@@ -2874,7 +2874,7 @@ function eventStoreToRanges(eventStore) {
     }
     return ranges;
 }
-// TODO: move to geom file?
+// TODO: move to geom files?
 function anyRangesContainRange(outerRanges, innerRange) {
     for (var _i = 0, outerRanges_1 = outerRanges; _i < outerRanges_1.length; _i++) {
         var outerRange = outerRanges_1[_i];
@@ -4537,7 +4537,7 @@ var complexOptions = [
 function mergeOptions(optionObjs) {
     return mergeProps(optionObjs, complexOptions);
 }
-// TODO: move this stuff to a "plugin"-related file...
+// TODO: move this stuff to a "plugin"-related files...
 var INTERNAL_PLUGINS = [
     ArrayEventSourcePlugin,
     FuncEventSourcePlugin,
@@ -4552,7 +4552,7 @@ function refinePluginDefs(pluginInputs) {
         if (typeof pluginInput === 'string') {
             var globalName = 'FullCalendar' + capitaliseFirstLetter(pluginInput);
             if (!window[globalName]) {
-                console.warn('Plugin file not loaded for ' + pluginInput);
+                console.warn('Plugin files not loaded for ' + pluginInput);
             }
             else {
                 plugins.push(window[globalName].default); // is an ES6 module

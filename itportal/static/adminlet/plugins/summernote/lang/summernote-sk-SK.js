@@ -141,8 +141,8 @@ return /******/ (function(modules) { // webpackBootstrap
         dragImageHere: 'Pretiahnuť sem obrázok',
         dropImage: 'Drop image or Text',
         selectFromFiles: 'Vybrať súbor',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
+        maximumFileSize: 'Maximum files size',
+        maximumFileSizeError: 'Maximum files size exceeded.',
         url: 'URL obrázku',
         remove: 'Remove Image',
         original: 'Original'

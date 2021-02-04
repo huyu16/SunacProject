@@ -10,8 +10,8 @@
 }(this, (function () { 'use strict';
 
   var Selector = {
-    CUSTOMFILE: '.custom-file input[type="file"]',
-    CUSTOMFILELABEL: '.custom-file-label',
+    CUSTOMFILE: '.custom-files input[type="files"]',
+    CUSTOMFILELABEL: '.custom-files-label',
     FORM: 'form',
     INPUT: 'input'
   };
@@ -164,4 +164,4 @@
   return bsCustomFileInput;
 
 })));
-//# sourceMappingURL=bs-custom-file-input.js.map
+//# sourceMappingURL=bs-custom-files-input.js.map

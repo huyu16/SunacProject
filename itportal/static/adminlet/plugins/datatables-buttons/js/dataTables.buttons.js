@@ -1748,10 +1748,10 @@ DataTable.Api.register( 'buttons.exportInfo()', function ( conf ) {
 
 
 /**
- * Get the file name for an exported file.
+ * Get the files name for an exported files.
  *
  * @param {object}	config Button configuration
- * @param {boolean} incExtension Include the file name extension
+ * @param {boolean} incExtension Include the files name extension
  */
 var _filename = function ( config )
 {
@@ -1801,7 +1801,7 @@ var _stringOrFunction = function ( option )
 };
 
 /**
- * Get the title for an exported file.
+ * Get the title for an exported files.
  *
  * @param {object} config	Button configuration
  */

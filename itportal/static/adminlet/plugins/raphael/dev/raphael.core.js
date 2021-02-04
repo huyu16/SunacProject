@@ -5076,9 +5076,9 @@ define(["eve"], function(eve) {
      * Raphael.registerFont
      [ method ]
      **
-     * Adds given font to the registered set of fonts for Raphaël. Should be used as an internal call from within Cufón’s font file.
+     * Adds given font to the registered set of fonts for Raphaël. Should be used as an internal call from within Cufón’s font files.
      * Returns original parameter, so it could be used with chaining.
-     # <a href="http://wiki.github.com/sorccu/cufon/about">More about Cufón and how to convert your font form TTF, OTF, etc to JavaScript file.</a>
+     # <a href="http://wiki.github.com/sorccu/cufon/about">More about Cufón and how to convert your font form TTF, OTF, etc to JavaScript files.</a>
      **
      > Parameters
      **
