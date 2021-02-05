@@ -1,0 +1,1 @@
+Get-Get-ADOrganizationalUnit -SearchBase "OU=上海区域公司,OU=融创集团,DC=testing,DC=local" -Filter * -Properties ProtectedFromAccidentalDeletion | where {$_.ProtectedFromAccidentalDeletion -eq $false} | set-ADOrganizationalUnit -ProtectedFromAccidentalDeletion $true

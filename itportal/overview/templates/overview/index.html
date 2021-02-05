@@ -1,0 +1,303 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sunac IT Portal{% endblock %}
+{% block css %}
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{% static 'adminlet/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static 'adminlet/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-table-master/dist/bootstrap-table.min.css' %}">
+{% endblock %}
+
+{% block breadcrumb %}
+<!-- Content Header (Page header) -->
+  <div class="col-sm-6">
+    <h1 class="m-0 text-dark">Dashboard</h1>
+  </div>
+<!-- /.col -->
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+  </div>
+<!-- /.col -->
+{% endblock %}
+
+{% block content %}
+  <!-- Main content -->
+
+        <!-- Table row -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Sunac</h3>
+
+                <p>堡垒机系统</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="https://ris.sunac.com.cn" target=_blank class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>Sunac<sup style="font-size: 20px"></sup></h3>
+
+                <p>基础监控系统</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="http://os.monitor.sunac.com.cn/zabbix.php?action=dashboard.view" target=_blank class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>Sunac</h3>
+
+                <p>Wiki系统</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="https://rccfwiki.sunac.com.cn:8443" target=_blank class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3>Sunac</h3>
+
+                <p>日志监控系统</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="http://log.monitor.sunac.com.cn:9000" target=_blank class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- /.Table row -->
+
+        <!-- Small boxes (Search Host) -->
+        <div class="row">
+          <div class="col-12">
+            <!-- /.card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">查询未添加监控的服务器</h3>
+              </div>
+              <!-- /.card-header -->
+              <div id="toolbarhost">
+                <button id="search1" class="btn btn-primary">
+                  查询
+                </button>
+              </div>
+              <div class="card-body">
+                <table id="example1"> </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+      <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- /.Small boxes (Search Host) -->
+
+
+        <!-- Small boxes (Search ExtUser) -->
+        <div class="row">
+          <div class="col-12">
+            <!-- /.card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">查询外部用户的过期时间</h3>
+              </div>
+              <!-- /.card-header -->
+              <div id="toolbarextuser">
+                <button id="search2" class="btn btn-primary">
+                  查询
+                </button>
+              </div>
+              <div class="card-body">
+                <table id="example2"> </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+      <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- /.Small boxes (Search ExtUser) -->
+    <!-- /.Main row -->
+
+
+{% endblock %}
+
+{% block script %}
+<!-- DataTables -->
+<script src="{% static 'adminlet/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'adminlet/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'adminlet/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'adminlet/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'bootstrap-table-master/dist/bootstrap-table.min.js' %}"></script>
+<script src="{% static 'bootstrap-table-master/dist/bootstrap-table-locale-all.min.js' %}"></script>
+
+<!-- page script -->
+<script>
+$(function (){
+  $("#example1").bootstrapTable({
+      cache: false,
+      toolbar: "#toolbarhost",
+      columns: [{
+          field: 'id',
+          title: '序号'
+      },
+      {
+          field: 'name',
+          title: '主机名'
+      }, {
+          field: 'ip',
+          title: 'IP地址'
+      }, {
+          field: 'owner',
+          title: '负责人'
+      }, {
+          field: 'department',
+          title: '部门'
+      }]
+    });
+
+  $("#example2").bootstrapTable({
+     cache: false,
+     toolbar: "#toolbarextuser",
+     columns: [{
+         field: 'userid',
+         title: '用户名'
+     }, {
+         field: 'username',
+         title: '姓名'
+     }, {
+         field: 'company',
+         title: '公司'
+     }, {
+         field: 'phone',
+         title: '电话'
+     }, {
+         field: 'email',
+         title: '邮箱'
+     }, {
+         field: 'status',
+         title: '状态'
+     }, {
+         field: 'expiretime',
+         title: '过期时间'
+     }, {
+         field: 'manager',
+         title: '管理员'
+         }]
+   });
+
+  $('#search1').click(function (){
+    $('#example1').bootstrapTable('destroy');
+    $("#example1").bootstrapTable({
+      url: "{% url "overview:host_monitordata" %}",
+      method: "get",
+      sidePagination: "client",
+      pagination: true,
+      pageNumber: 1,
+      pageSize: 10,
+      paginationPreText: "上一页",
+      paginationNextText: "下一页",
+      toolbar: "#toolbarhost",
+      striped: true,
+      search: true,
+      sortable: true,
+      sortOrder: "asc",
+      sortName: "name",
+      locale: "zh-CN",
+      columns: [{
+          field: 'id',
+          title: '序号'
+      },
+      {
+          field: 'name',
+          title: '主机名'
+      }, {
+          field: 'ip',
+          title: 'IP地址'
+      }, {
+          field: 'owner',
+          title: '负责人'
+      }, {
+          field: 'department',
+          title: '部门'
+      }]
+    });
+  });
+
+
+  $('#search2').click(function (){
+    $('#example2').bootstrapTable('destroy');
+    $("#example2").bootstrapTable({
+      url: "{% url "overview:user_expire" %}",
+      method: "get",
+      sidePagination: "client",
+      pagination: true,
+      pageNumber: 1,
+      pageSize: 10,
+      paginationPreText: "上一页",
+      paginationNextText: "下一页",
+      toolbar: "#toolbarextuser",
+      striped: true,
+      search: true,
+      sortable: true,
+      sortOrder: "asc",
+      sortName: "name",
+      locale: "zh-CN",
+      columns: [{
+          field: 'userid',
+          title: '用户名'
+      }, {
+          field: 'username',
+          title: '姓名'
+      }, {
+          field: 'company',
+          title: '公司'
+      }, {
+          field: 'phone',
+          title: '电话'
+      }, {
+          field: 'email',
+          title: '邮箱'
+      }, {
+          field: 'status',
+          title: '状态'
+      }, {
+          field: 'expiretime',
+          title: '过期时间'
+      }, {
+          field: 'manager',
+          title: '管理员'
+          }]
+    });
+  });
+});
+
+</script>
+{% endblock %}

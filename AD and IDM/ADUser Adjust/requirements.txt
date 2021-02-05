@@ -1,0 +1,4 @@
+PyMySQL~=0.10.1
+openpyxl~=3.0.5
+ldap3~=2.8.1
+zeep~=4.0.0
