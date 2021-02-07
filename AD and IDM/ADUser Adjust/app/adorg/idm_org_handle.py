@@ -5,7 +5,7 @@ from libs.connect import MysqlOper
 from libs.logger import infolog_org, errlog_org
 
 
-def area_org_handle(v_area, levelnum):
+def area_org_handle(v_areaname, v_area, levelnum):
     dbconn = MysqlOper()
 
     orghandlenum = dbconn.dbonequery('select count(0) from idm_org_handle where areaid = %s', v_area)
@@ -41,7 +41,7 @@ def area_org_handle(v_area, levelnum):
                     else:
                         l_orglongnamestr.append('OU=' + l_orglongname[index])
                 l_orglongnamestr.reverse()
-                organdep = (','.join(l_orglongnamestr) + ',DC=testing,DC=local')
+                organdep = (','.join(l_orglongnamestr) + ',DC=SUNAC,DC=local')
             else:
                 organdep = 'no idm organization'
                 organlevel = 0
@@ -52,11 +52,7 @@ def area_org_handle(v_area, levelnum):
                     'select organnumber, organname, organparentno, organdep, organhandled from idm_org_handle '
                     'where organnumber = %s ', organnumber)
 
-                if organdisplayname.startswith('融创中国_融创集团_'):
-                    pre_orgparentno = "Special preorg num"
-                    pre_orgdep = "Special preorg"
-                    organhandled = 4
-                elif organlevel > levelnum:
+                if organlevel > levelnum:
                     pre_orgparentno = "not required pre org num"
                     pre_orgdep = "not required pre org"
                     organhandled = 6
@@ -89,8 +85,8 @@ def area_org_handle(v_area, levelnum):
                                          'organcreate,organdep,organlevel,organstatus,pre_orgparentno,pre_orgdep,'
                                          'organhandled,areaid) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', l_orginfo)
         if res_insert:
-            infolog_org('IDM信息--区域编号"%s" 已处理组织原始数据信息：%s条' % (v_area, len(org_basic)))
+            infolog_org('IDM信息--区域"%s" 已处理组织原始数据信息：%s条' % (v_areaname, len(org_basic)))
     else:
-        infolog_org('IDM信息--区域编号"%s" 没有新的组织需要做处理' % v_area)
+        infolog_org('IDM信息--区域"%s" 没有新的组织需要做处理' % v_areaname)
 
     dbconn.dbclose()

@@ -4,9 +4,9 @@
 from libs.connect import MysqlOper, excelidm
 
 EXCELORGFILE = \
-    r"C:\Users\zxcvb\Documents\CloudStation\My Python\SunacProject\AD and IDM\ADUser Adjust\files\tmp001-org0106.xlsx"
+    r"C:\Users\zxcvb\Documents\CloudStation\My Python\SunacProject\AD and IDM\ADUser Adjust\files\tmp001-org205.xlsx"
 EXCELUSRFILE = \
-    r"C:\Users\zxcvb\Documents\CloudStation\My Python\SunacProject\AD and IDM\ADUser Adjust\files\tmp001-usr0106.xlsx"
+    r"C:\Users\zxcvb\Documents\CloudStation\My Python\SunacProject\AD and IDM\ADUser Adjust\files\tmp001-user205.xlsx"
 # 插入IDM组织原始数据到数据库
 dbconn = MysqlOper()
 # 判断【idm_org_init】是否为空

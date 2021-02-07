@@ -5,7 +5,7 @@ from libs.connect import MysqlOper
 from libs.logger import infolog_user, errlog_user
 
 
-def area_user_handle(v_area, levelnum):
+def area_user_handle(v_areaname, v_area, levelnum):
     dbconn = MysqlOper()
 
     userhandlenum = dbconn.dbonequery('select count(0) from idm_user_handle where userareaid = %s', v_area)
@@ -46,15 +46,18 @@ def area_user_handle(v_area, levelnum):
                 else:
                     l_userorgou.append('OU=' + l_userorg[index])
             l_userorgou.reverse()
-            userorg = (','.join(l_userorgou) + ',DC=testing,DC=local')
+            userorg = (','.join(l_userorgou) + ',DC=SUNAC,DC=local')
             # 判断条件不够，可以加上 用户如果没有变化 就不需要
             if userstatus == 'Active' and useremptype == 'Full-Time':
-                res_userhandle = dbconn.dbonequery('select userid, userorg, userhandled from idm_user_handle '
-                                                   'where userid = %s', userid)
-                if res_userhandle is not None and res_userhandle[1] == userorg and res_userhandle[2] in (1, 2):
-                    userhandled = 7
-                else:
+                if userhandlenum[0] == 0:
                     userhandled = 11
+                else:
+                    res_userhandle = dbconn.dbonequery('select userid, userorg, userhandled from idm_user_handle '
+                                                       'where userid = %s', userid)
+                    if res_userhandle is not None and res_userhandle[1] == userorg and res_userhandle[2] in (1, 2):
+                        userhandled = 7
+                    else:
+                        userhandled = 11
             else:
                 userhandled = 0
             t_userobj = (userid, username, userdeptno, userorg, userupdate,
@@ -64,8 +67,12 @@ def area_user_handle(v_area, levelnum):
                                          'userupdate,usercreate,useremptype,userstatus,userareaid,userhandled) '
                                          'values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', l_userinfo)
         if res_insert:
-            infolog_user('IDM信息--区域编号"%s" 已处理用户原始数据信息：%s条' % (v_area, len(user_basic)))
+            infolog_user('IDM信息--区域"%s" 已处理用户原始数据信息：%s条' % (v_areaname, len(user_basic)))
     else:
-        infolog_user('IDM信息--区域编号"%s" 没有新的组织需要做处理' % v_area)
+        infolog_user('IDM信息--区域"%s" 没有新的用户需要做处理' % v_areaname)
 
     dbconn.dbclose()
+
+
+if __name__ == "__main__":
+    area_user_handle('北京区域集团', '000104', 4)

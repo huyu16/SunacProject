@@ -4,7 +4,8 @@
 from libs.logger import infolog_org, errlog_org
 from libs.connect import AdOper, MysqlOper
 
-def area_org_exec(v_area):
+
+def area_org_exec(v_areaname, v_area):
     # 绑定Mysql数据库
     dbconn = MysqlOper()
     adconn = AdOper()
@@ -19,13 +20,12 @@ def area_org_exec(v_area):
         if maxorglevel is not None:
             while minorglevel <= maxorglevel:
                 t_resorg = dbconn.dbmanyquery(
-                    'select organnumber, organname, organparentno, organdep, pre_orgdep, organhandled '
-                    'from idm_org_handle where organlevel = %s and organhandled > 9 '
-                    'and areaid = %s', minorglevel[0], v_area)
+                    'select organnumber, organname, organparentno, organdep, pre_orgdep, organhandled from idm_org_handle where organlevel = %s and organhandled > 9 and areaid = %s',
+                    minorglevel, v_area)
                 if len(t_resorg) > 0:
                     for orgobject in t_resorg:
                         adfilter = '(distinguishedName=' + orgobject[3] + ')'
-                        res_adquery = adconn.adquery('ou=融创集团,dc=testing,dc=local', adfilter)
+                        res_adquery = adconn.adquery('ou=融创集团,dc=SUNAC,dc=local', adfilter)
                         if res_adquery:
                             dbconn.dbonemod('update idm_org_handle set organhandled = 2 '
                                             'where organnumber = %s ', (orgobject[0]))
@@ -60,7 +60,7 @@ def area_org_exec(v_area):
                                                     'where organnumber = %s ', (orgobject[0]))
                                     infolog_org('AD信息--移动成功的OU：%s' % (orgobject[3]))
                                 else:
-                                    errlog_org('AD信息--移动失败的OU：%s' % orgparent)
+                                    errlog_org('AD信息--移动失败的OU：%s' % (orgobject[3]))
                                     dbconn.dbonemod('update idm_org_handle set organhandled = 10 '
                                                     'where organnumber = %s ', (orgobject[0]))
                             else:
@@ -68,13 +68,13 @@ def area_org_exec(v_area):
                                 dbconn.dbonemod('update dic_idm_org set orghandled = 3 '
                                                 'where organnumber = %s ', (orgobject[0]))
                 else:
-                    infolog_org("AD信息--没有需要处理的OU")
+                    infolog_org('AD信息--区域"%s" 没有需要处理的OU' % v_areaname)
                 minorglevel += 1
         else:
-            infolog_org("AD信息--没有新增需要处理的OU")
+            infolog_org('AD信息--区域"%s" 没有新增需要处理的OU' % v_areaname)
 
     except Exception as e:
-        errlog_org(e)
+        errlog_org(repr(e))
 
     finally:
         adconn.adclose()

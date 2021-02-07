@@ -30,7 +30,7 @@ class MysqlOper:
                                         db=self.dbname,
                                         charset=self.charset)
         except Exception as e:
-            errlog_sys(e)
+            errlog_sys(repr(e))
         return mysqlconn
 
     def dbclose(self):
@@ -53,7 +53,7 @@ class MysqlOper:
                 self.dbcursor.execute(sql, args)
                 resmany = self.dbcursor.fetchall()
             except Exception as e:
-                errlog_sys(e)
+                errlog_sys(repr(e))
         return resmany
 
     def dbonequery(self, sql, *args):
@@ -92,10 +92,10 @@ class MysqlOper:
 class AdOper:
     def __init__(self):
         try:
-            server = Server('192.168.4.100')
-            self.adconn = Connection(server, 'testing\\admin_adsrv', 'Sunac2020', auto_bind=True)
-            # server = Server('192.168.4.200')
-            # self.adconn = Connection(server, 'sunac\\jt_srv_ad', 'pass@word1', auto_bind=True)
+            # server = Server('192.168.4.100')
+            # self.adconn = Connection(server, 'testing\\admin_adsrv', 'Sunac2020', auto_bind=True)
+            server = Server('192.168.4.200')
+            self.adconn = Connection(server, 'sunac\\jt_srv_ad', 'pass@word1', auto_bind=True)
         except Exception as e:
             errlog_sys(self.adconn.result)
 

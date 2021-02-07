@@ -54,7 +54,7 @@ def area_user_inc():
                                                      'values (%s,%s,%s,%s,%s,%s,%s,%s)', l_userinfo)
                     if res_insert:
                         infolog_user('IDM信息--查询时间：%s 至 %s，结果集当前分页：%s，新增用户数：%s' %
-                                     (begintime, begintime, NUM, len(xml_tree)))
+                                     (begintime, endtime, NUM, len(xml_tree)))
                         if len(xml_tree) == 100:
                             NUM += 1
                         else:
