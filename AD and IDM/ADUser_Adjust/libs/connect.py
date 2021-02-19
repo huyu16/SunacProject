@@ -112,6 +112,16 @@ class AdOper:
                 errlog_sys(e)
         return resadquery
 
+    def adattrquery(self, searchou, searchfilter, *args):
+        if self.adconn:
+            try:
+                resadattrquery = self.adconn.search(search_base=searchou,
+                                                search_filter=searchfilter,
+                                                attributes=list(args))
+            except Exception as e:
+                errlog_sys(e)
+        return resadattrquery
+
     def adadd(self, objdn, objtype):
         if self.adconn:
             try:

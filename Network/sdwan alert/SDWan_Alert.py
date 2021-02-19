@@ -28,6 +28,7 @@ except Exception as e:
     # mod_datetime = '2021-01-26 00:00:00'
 # 查询类型为1的故障信息，已有的信息不做覆盖
 resvalue1 = sdwanquery(1, start_datetime, end_datetime)
+print(resvalue1)
 if len(resvalue1) > 0:
     resalert1 = []
     for objres1 in resvalue1:

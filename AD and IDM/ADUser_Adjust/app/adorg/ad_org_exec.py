@@ -20,7 +20,8 @@ def area_org_exec(v_areaname, v_area):
         if maxorglevel is not None:
             while minorglevel <= maxorglevel:
                 t_resorg = dbconn.dbmanyquery(
-                    'select organnumber, organname, organparentno, organdep, pre_orgdep, organhandled from idm_org_handle where organlevel = %s and organhandled > 9 and areaid = %s',
+                    'select organnumber, organname, organparentno, organdep, pre_orgdep, organhandled '
+                    'from idm_org_handle where organlevel = %s and organhandled > 9 and areaid = %s',
                     minorglevel, v_area)
                 if len(t_resorg) > 0:
                     for orgobject in t_resorg:

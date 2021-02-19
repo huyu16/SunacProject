@@ -1292,7 +1292,11 @@ ALL PRIVILEGES|test_ad
       <Position>11</Position>
       <DataType>int|0s</DataType>
     </column>
-    <key id="380" parent="285" name="PRIMARY">
+    <column id="380" parent="285" name="status">
+      <Position>12</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="381" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>areaid</ColNames>
       <Primary>1</Primary>

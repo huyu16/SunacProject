@@ -3,6 +3,62 @@
 
 import logging
 from logging.handlers import TimedRotatingFileHandler
+from pathlib import Path
+import re
+
+
+def abs_filepath(childpath, filename):
+    basepath = Path(Path(__file__).resolve().parent.parent)
+    filepath = Path(basepath, childpath, filename)
+    return filepath
+
+
+def errlog_sys(syserrmsg):
+    # 自定义logger
+    syserrlogger = logging.getLogger("syserrlogger")
+    # 自定义logger接收的日志级别
+    syserrlogger.setLevel(logging.ERROR)
+    # 判断列表是否已存在handle，如有不做创建
+    if not syserrlogger.handlers:
+        # 创建按日期分割的文件handle
+        syserrhandle = TimedRotatingFileHandler(abs_filepath('logs', 'errorlog_sys'),
+                                                when='midnight', encoding='utf-8', backupCount=7)
+        syserrhandle.suffix = "%Y-%m-%d.log"
+        syserrhandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
+        # 自定义日志格式
+        syserrformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
+        # 将日志格式绑定handle
+        syserrhandle.setFormatter(syserrformat)
+        # 将handle绑定logger
+        syserrlogger.addHandler(syserrhandle)
+        # 输出信息
+    else:
+        pass
+    syserrlogger.error(syserrmsg)
+
+
+def debuglog_sys(sysdebugmsg):
+    # 自定义logger
+    sysdebuglogger = logging.getLogger("sysdebuglogger")
+    # 自定义logger接收的日志级别
+    sysdebuglogger.setLevel(logging.DEBUG)
+    # 判断列表是否已存在handle，如有不做创建
+    if not sysdebuglogger.handlers:
+        # 创建按日期分割的文件handle
+        sysdebughandle = TimedRotatingFileHandler(abs_filepath('logs', 'debuglog_sys'),
+                                                  when='midnight', encoding='utf-8', backupCount=7)
+        sysdebughandle.suffix = "%Y-%m-%d.log"
+        sysdebughandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
+        # 自定义日志格式
+        sysdebugformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
+        # 将日志格式绑定handle
+        sysdebughandle.setFormatter(sysdebugformat)
+        # 将handle绑定logger
+        sysdebuglogger.addHandler(sysdebughandle)
+        # 输出信息
+    else:
+        pass
+    sysdebuglogger.error(sysdebugmsg)
 
 
 def errlog_user(errmsg):
@@ -13,7 +69,10 @@ def errlog_user(errmsg):
     # 判断列表是否已存在handle，如有不做创建
     if not errlogger.handlers:
         # 创建按日期分割的文件handle
-        errhandle = TimedRotatingFileHandler('errorlog_user', when='midnight', encoding='utf-8')
+        errhandle = TimedRotatingFileHandler(abs_filepath('logs', 'errorlog_user'),
+                                             when='midnight', encoding='utf-8', backupCount=7)
+        errhandle.suffix = "%Y-%m-%d.log"
+        errhandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
         # 自定义日志格式
         errformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
         # 将日志格式绑定handle
@@ -30,7 +89,10 @@ def infolog_user(infomsg):
     infologger = logging.getLogger("infologger")
     infologger.setLevel(logging.INFO)
     if not infologger.handlers:
-        infohandle = TimedRotatingFileHandler('infolog_user', when='midnight', encoding='utf-8')
+        infohandle = TimedRotatingFileHandler(abs_filepath('logs', 'infolog_user'),
+                                              when='midnight', encoding='utf-8', backupCount=7)
+        infohandle.suffix = "%Y-%m-%d.log"
+        infohandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
         infoformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
         infohandle.setFormatter(infoformat)
         infologger.addHandler(infohandle)
@@ -47,7 +109,10 @@ def debuglog_user(debugmsg):
     # 判断列表是否已存在handle，如有不做创建
     if not debuglogger.handlers:
         # 创建按日期分割的文件handle
-        debughandle = TimedRotatingFileHandler('debuglog_user', when='midnight', encoding='utf-8')
+        debughandle = TimedRotatingFileHandler(abs_filepath('logs', 'debuglog_user'),
+                                               when='midnight', encoding='utf-8', backupCount=7)
+        debughandle.suffix = "%Y-%m-%d.log"
+        debughandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
         # 自定义日志格式
         debugformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
         # 将日志格式绑定handle
@@ -68,7 +133,10 @@ def errlog_org(orgerrmsg):
     # 判断列表是否已存在handle，如有不做创建
     if not orgerrlogger.handlers:
         # 创建按日期分割的文件handle
-        orgerrhandle = TimedRotatingFileHandler('errorlog_org', when='midnight', encoding='utf-8')
+        orgerrhandle = TimedRotatingFileHandler(abs_filepath('logs', 'errorlog_org'),
+                                                when='midnight', encoding='utf-8', backupCount=7)
+        orgerrhandle.suffix = "%Y-%m-%d.log"
+        orgerrhandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
         # 自定义日志格式
         orgerrformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
         # 将日志格式绑定handle
@@ -85,7 +153,10 @@ def infolog_org(orginfomsg):
     orginfologger = logging.getLogger("org_infologger")
     orginfologger.setLevel(logging.INFO)
     if not orginfologger.handlers:
-        orginfohandle = TimedRotatingFileHandler('infolog_org', when='midnight', encoding='utf-8')
+        orginfohandle = TimedRotatingFileHandler(abs_filepath('logs', 'infolog_org'),
+                                                 when='midnight', encoding='utf-8', backupCount=7)
+        orginfohandle.suffix = "%Y-%m-%d.log"
+        orginfohandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
         orginfoformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
         orginfohandle.setFormatter(orginfoformat)
         orginfologger.addHandler(orginfohandle)
@@ -102,7 +173,10 @@ def debuglog_org(orgdebugmsg):
     # 判断列表是否已存在handle，如有不做创建
     if not orgdebuglogger.handlers:
         # 创建按日期分割的文件handle
-        orgdebughandle = TimedRotatingFileHandler('debuglog_org', when='midnight', encoding='utf-8')
+        orgdebughandle = TimedRotatingFileHandler(abs_filepath('logs', 'debuglog_org'),
+                                                  when='midnight', encoding='utf-8', backupCount=7)
+        orgdebughandle.suffix = "%Y-%m-%d.log"
+        orgdebughandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
         # 自定义日志格式
         orgdebugformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
         # 将日志格式绑定handle
@@ -123,7 +197,10 @@ def errlog_comp(comperrmsg):
     # 判断列表是否已存在handle，如有不做创建
     if not comperrlogger.handlers:
         # 创建按日期分割的文件handle
-        comperrhandle = TimedRotatingFileHandler('errorlog_comp', when='midnight', encoding='utf-8')
+        comperrhandle = TimedRotatingFileHandler(abs_filepath('logs', 'errorlog_comp'),
+                                                 when='midnight', encoding='utf-8', backupCount=7)
+        comperrhandle.suffix = "%Y-%m-%d.log"
+        comperrhandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
         # 自定义日志格式
         comperrformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
         # 将日志格式绑定handle
@@ -140,7 +217,10 @@ def infolog_comp(compinfomsg):
     compinfologger = logging.getLogger("comp_infologger")
     compinfologger.setLevel(logging.INFO)
     if not compinfologger.handlers:
-        compinfohandle = TimedRotatingFileHandler('infolog_comp', when='midnight', encoding='utf-8')
+        compinfohandle = TimedRotatingFileHandler(abs_filepath('logs', 'infolog_comp'),
+                                                 when='midnight', encoding='utf-8', backupCount=7)
+        compinfohandle.suffix = "%Y-%m-%d.log"
+        compinfohandle.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$")
         compinfoformat = logging.Formatter('%(asctime)s - %(levelname)s : %(message)s')
         compinfohandle.setFormatter(compinfoformat)
         compinfologger.addHandler(compinfohandle)
