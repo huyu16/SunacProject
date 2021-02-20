@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+"""
+获取sdwan的告警，并通过微信转发给对应区域的同事
+"""
 from func import toweixin, secondstotime, sdwanquery, MysqlOper
 import time
 import datetime
