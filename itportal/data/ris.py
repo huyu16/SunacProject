@@ -66,9 +66,3 @@ def get_extuser(authtoken):
     return extuser_inf_request.json()
 
 
-if __name__ == "__main__":
-    auth_token = gettoken()
-    devinf = get_devinf(auth_token)
-    print(devinf)
-
-    getoff(auth_token)

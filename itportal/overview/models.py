@@ -16,13 +16,23 @@ class host_notmonitor(models.Model):
 
 
 class UserExpire(models.Model):
-    userid = models.CharField(max_length=20, primary_key=True)
+    userid = models.CharField(max_length=20, unique=True)
     username = models.CharField(max_length=20)
-    company = models.CharField(max_length=100)
-    phone = models.CharField(max_length=20)
-    email = models.EmailField()
-    state = models.CharField(max_length=10)
-    expiretime = models.DateTimeField()
-    manager = models.CharField(max_length=20, default='huy33')
-    updatetime = models.DateTimeField()
-    createtime = models.DateTimeField()
+    company = models.CharField(max_length=100, null=True)
+    phone = models.CharField(max_length=20, null=True)
+    email = models.EmailField(null=True)
+    state = models.CharField(max_length=10, null=True)
+    expiretime = models.DateTimeField(null=True)
+    manager = models.EmailField(null=True)
+    updatetime = models.DateTimeField(null=True)
+    createtime = models.DateTimeField(null=True)
+    usertype = models.CharField(max_length=20, null=True, default='Temp')
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['expiretime']),
+            ]
+
+
+class RisTempUser(models.Model):
+    userid = models.CharField(max_length=20, primary_key=True)

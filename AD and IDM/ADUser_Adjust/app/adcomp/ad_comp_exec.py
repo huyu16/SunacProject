@@ -48,13 +48,14 @@ def area_comp_exec(v_areaname, v_area):
         pass
 
     # 查询单个区域下的计算机OU组是否有变更计算机账号，并做相应归类
-    t_areaou = dbconn.dbmanyquery('select areacode,compprefix from sum_inf_area where parentid = %s and status = 1',
+    t_areaou = dbconn.dbmanyquery('select areacode,compprefix,areadn from sum_inf_area '
+                                  'where parentid = %s and status = 1',
                                   v_area)
     p_areaou = dbconn.dbonequery('select areacode from sum_inf_area where areaid = %s', v_area)
     t_adcomp2 = dbconn.dbmanyquery('select compprefix, areadn, areacode, areaname from sum_inf_area '
                                    'where status = 1 and parentid<>0 order by compprefix desc')
     for areaou in t_areaou:
-        adconn.adattrquery(f"OU={areaou[0]},OU={p_areaou[0]},OU=融创集团,DC=SUNAC,DC=local",
+        adconn.adattrquery(areaou[2],
                            f"(&(objectClass=computer)(!(name={areaou[1]}*)))",
                            'name')
         resadconn2 = adconn.adconn.response

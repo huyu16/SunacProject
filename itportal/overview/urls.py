@@ -9,5 +9,6 @@ app_name = 'overview'
 urlpatterns = [
     path('', views.index, name='index'),
     path('host_monitordata', views.host_monitordata, name='host_monitordata'),
-    path('user_expire', views.user_expire, name='user_expire')
+    path('user_expire', views.user_expire, name='user_expire'),
+    path('user_expire/savedata', views.savedata_manager, name='savedata_manager')
 ]

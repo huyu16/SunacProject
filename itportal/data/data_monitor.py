@@ -3,14 +3,10 @@
 
 from data import ris
 from data import zabbix
-import os
-import django
 from django.db.models import Max
-from overview.models import host_notmonitor
-import pymysql
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "itportal.settings")
-django.setup()
+from overview.models import host_notmonitor, UserExpire, RisTempUser
+from django.core.mail import send_mail
+from datetime import datetime, timedelta
 
 
 def ris_data():
@@ -88,3 +84,68 @@ def insert_data():
     else:
         pass
 
+
+def monitor_expireuser():
+    res_tempuser = UserExpire.objects.filter(expiretime__isnull=False). \
+        values('id', 'username', 'company', 'phone', 'email', 'state', 'expiretime', 'manager')
+    return res_tempuser
+
+
+def insert_ristempuser():
+    l_risuser = []
+    auth_token = ris.gettoken()
+    userinf = ris.get_extuser(auth_token)
+    ris.getoff(auth_token)
+
+    for obj_userinf in userinf['content']:
+        s_risuser = RisTempUser(userid=obj_userinf['loginName'])
+        l_risuser.append(s_risuser)
+    RisTempUser.objects.all().delete()
+    RisTempUser.objects.bulk_create(l_risuser)
+
+
+def warnning_expireuser():
+    cur_datetime = datetime.today()
+    sevenday = datetime.strftime(cur_datetime - timedelta(days=-7), '%Y-%m-%d')
+    fifteenday = datetime.strftime(cur_datetime - timedelta(days=-15), '%Y-%m-%d')
+    # 查询过期时间还有15天和7天的用户
+    res_alertuser = UserExpire.objects.filter(expiretime__in=(sevenday, fifteenday), state='active'). \
+        values('userid', 'username', 'company', 'phone', 'email', 'expiretime', 'manager')
+    if res_alertuser.count() > 0:
+        # 查询堡垒机现有临时用户
+        l_risuser = []
+        q_risuser = RisTempUser.objects.all().values('userid')
+        for obj_risuser in q_risuser:
+            l_risuser.append(obj_risuser['userid'])
+
+        for obj_alertuser in res_alertuser:
+            if obj_alertuser['company']:
+                alertuser_company = obj_alertuser['company']
+            else:
+                alertuser_company = '未登记'
+            if obj_alertuser['phone']:
+                alertuser_phone = obj_alertuser['phone']
+            else:
+                alertuser_phone = '未登记'
+            if obj_alertuser['email']:
+                alertuser_email = obj_alertuser['email']
+            else:
+                alertuser_email = '未登记'
+            send_subject = '您管理的临时用户账号即将过期，请处理！'
+            send_body = '过期时间：' + str(obj_alertuser['expiretime']) + '\n用户账号：' + \
+                        obj_alertuser['userid'] + \
+                        '\n用户姓名：' + obj_alertuser['username'] + '\n用户公司：' + alertuser_company + \
+                        '\n用户电话：' + alertuser_phone + '\n用户邮件：' + alertuser_email
+            # 如果过期的用户id属于堡垒机用户，给账号管理员和堡垒机管理员发送邮件
+            if obj_alertuser['userid'].lower() in l_risuser:
+                if obj_alertuser['manager'] is None or obj_alertuser['manager'] == '':
+                    recive_user = ['huy33@sunac.com.cn']
+                else:
+                    recive_user = ['huy33@sunac.com.cn', obj_alertuser['manager']]
+                send_mail(send_subject, send_body, 'report@sunac.com.cn', recive_user)
+            # 如果过期用户id不属于堡垒机用户，仅给账号管理员发送邮件
+            else:
+                if obj_alertuser['manager'] is None or obj_alertuser['manager'] == '':
+                    pass
+                else:
+                    send_mail(send_subject, send_body, 'report@sunac.com.cn', obj_alertuser['manager'])

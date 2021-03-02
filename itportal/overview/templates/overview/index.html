@@ -6,6 +6,9 @@
   <link rel="stylesheet" href="{% static 'adminlet/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
   <link rel="stylesheet" href="{% static 'adminlet/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
   <link rel="stylesheet" href="{% static 'bootstrap-table-master/dist/bootstrap-table.min.css' %}">
+  <style>
+  #zy1{'background':'#F0E68C'}
+  </style>
 {% endblock %}
 
 {% block breadcrumb %}
@@ -32,7 +35,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Sunac</h3>
+                <h3>RIS</h3>
 
                 <p>堡垒机系统</p>
               </div>
@@ -47,7 +50,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>Sunac<sup style="font-size: 20px"></sup></h3>
+                <h3>SYS<sup style="font-size: 20px"></sup></h3>
 
                 <p>基础监控系统</p>
               </div>
@@ -60,9 +63,9 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-primary">
               <div class="inner">
-                <h3>Sunac</h3>
+                <h3>WIKI</h3>
 
                 <p>Wiki系统</p>
               </div>
@@ -75,9 +78,9 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-primary">
+            <div class="small-box bg-warning">
               <div class="inner">
-                <h3>Sunac</h3>
+                <h3>LOG</h3>
 
                 <p>日志监控系统</p>
               </div>
@@ -125,7 +128,7 @@
             <!-- /.card -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">查询外部用户的过期时间</h3>
+                <h3 class="card-title">查询外部用户的过期时间<br/>注：临时账号过期后，会发送邮件给被通知人，请填写内部员工邮箱地址且仅允许一人</h3>
               </div>
               <!-- /.card-header -->
               <div id="toolbarextuser">
@@ -167,13 +170,13 @@ $(function (){
       columns: [{
           field: 'id',
           title: '序号'
-      },
-      {
+      }, {
           field: 'name',
           title: '主机名'
       }, {
           field: 'ip',
-          title: 'IP地址'
+          title: 'IP地址',
+          visible: false
       }, {
           field: 'owner',
           title: '负责人'
@@ -187,8 +190,8 @@ $(function (){
      cache: false,
      toolbar: "#toolbarextuser",
      columns: [{
-         field: 'userid',
-         title: '用户名'
+         field: 'id',
+         title: '序列'
      }, {
          field: 'username',
          title: '姓名'
@@ -197,10 +200,12 @@ $(function (){
          title: '公司'
      }, {
          field: 'phone',
-         title: '电话'
+         title: '电话',
+         visible: false
      }, {
          field: 'email',
-         title: '邮箱'
+         title: '邮箱',
+         visible: false
      }, {
          field: 'status',
          title: '状态'
@@ -209,7 +214,7 @@ $(function (){
          title: '过期时间'
      }, {
          field: 'manager',
-         title: '管理员'
+         title: '被通知人'
          }]
    });
 
@@ -234,13 +239,13 @@ $(function (){
       columns: [{
           field: 'id',
           title: '序号'
-      },
-      {
+      }, {
           field: 'name',
           title: '主机名'
       }, {
           field: 'ip',
-          title: 'IP地址'
+          title: 'IP地址',
+          visible: false
       }, {
           field: 'owner',
           title: '负责人'
@@ -271,8 +276,9 @@ $(function (){
       sortName: "name",
       locale: "zh-CN",
       columns: [{
-          field: 'userid',
-          title: '用户名'
+          field: 'id',
+          title: '序号',
+          class: 'id'
       }, {
           field: 'username',
           title: '姓名'
@@ -281,23 +287,118 @@ $(function (){
           title: '公司'
       }, {
           field: 'phone',
-          title: '电话'
+          title: '电话',
+          visible: false
       }, {
           field: 'email',
-          title: '邮箱'
+          title: '邮箱',
+          visible: false
       }, {
-          field: 'status',
+          field: 'state',
           title: '状态'
       }, {
           field: 'expiretime',
           title: '过期时间'
       }, {
           field: 'manager',
-          title: '管理员'
-          }]
+          title: '被通知人',
+          class: 'editable'
+      }, {
+          title: '操作',
+          field: 'operate',
+          class: 'editOperate',
+          formatter: formatterOperate
+      }]
     });
   });
 });
+
+//格式化操作
+function formatterOperate(value, row, index) {
+	return `<button onclick='editRow(${index})' class='btn small blue'> 编辑</button >`;
+}
+// 新增行和编辑行时右侧操作改为保存和取消
+let editFormatter = `<button onclick = 'saveRow(this)' class = 'btn small' > 保存 </button>
+                     <button onclick='cancleRow(this)' class='btn small'>取消</button >`
+//静默刷新
+function refreshTable()
+{
+   $('#example2').bootstrapTable('refresh', {
+       silent: true,
+       url: '',
+       query: ''
+   });
+        addKey = true;
+
+    }
+
+//保存数据
+function saveRow(ele) {
+
+	let obj = $(ele).parent().parent(); //获取tr的dom
+	let saveKey = true; //是否允许保存
+	let edit = obj.attr('data-edit') ? true : false; //是编辑还是添加
+	let arrVal; //保存填入的数据
+	obj.find('td.editable').each(function (index) {
+	    let val = $(this).find('input').val().trim();
+	    if (index < 1 && !val) saveKey = false; //姓名不能为空，否则不允许保存
+	    arrVal = val
+	})
+
+	let manageruser = arrVal;
+	let query;
+	if (edit) { //修改编辑
+	    let id = obj.find('td.id').text()
+	    query = {
+	        id,
+	        manageruser
+	    }
+	} else { //新增添加
+	    query = {
+	        id,
+	        manageruser
+	    }
+	}
+  $.ajax({
+            type: "post",
+            url: "user_expire/savedata",
+            data: JSON.stringify(query),
+            contentType:'application/json',
+            success:function(data) {  //接收后台返回的参数
+                if(data==0) {
+                    alert("数据保存成功")
+                }
+                else{
+                    alert("数据保存失败")
+                }
+            },
+            error:function (error) {
+                console.log(error)
+                alert(error)
+            }
+        })
+	//发送数据成功后回调刷新
+	refreshTable() //刷新
+}
+//开启编辑
+function editRow(index) {
+    console.log(index)
+    $("#example2 tr:nth-child(" + (index + 1)).attr('data-edit', true) //编辑标志
+    $("#example2 tr:nth-child(" + (index + 1) + ") td.editable").each(function () {
+        var value = $(this).text();
+        $(this).html("<input value='" + value + "'>");
+    });
+    $("#example2 tr:nth-child(" + (index + 1) + ") td.editOperate").html(editFormatter)
+}
+
+//取消编辑
+function cancleRow(ele) {
+    let obj = $(ele).parent().parent(); //获取tr的dom
+    let edit = obj.attr('data-edit') ? true : false;
+    if (edit) { //编辑状态回归
+        refreshTable() //刷新
+    }
+}
 
 </script>
 {% endblock %}

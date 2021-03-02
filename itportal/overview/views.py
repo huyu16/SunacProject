@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import JsonResponse
 from overview.models import host_notmonitor, UserExpire
+from data.data_monitor import monitor_expireuser
+import json
 
 
 # from data import data_monitor
@@ -23,8 +25,16 @@ def host_monitordata(request):
 
 
 def user_expire(request):
-    res_tempuser = list(UserExpire.objects.all().values
-                        ('userid', 'username', 'company', 'phone', 'email',
-                         'state', 'expiretime', 'manager')
-                        )
-    return JsonResponse(res_tempuser, safe=False)
+    t_expireuser = monitor_expireuser()
+    l_tempuser = list(t_expireuser)
+    return JsonResponse(l_tempuser, safe=False)
+
+
+def savedata_manager(request):
+    if request.is_ajax():
+        data = json.loads(request.body)
+        t_id = data['id']
+        manangeruser = data['manageruser']
+        UserExpire.objects.filter(id=t_id).update(manager=manangeruser)
+    return HttpResponse(0)
+
